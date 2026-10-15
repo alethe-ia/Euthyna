@@ -14,7 +14,7 @@ Que hace, paso a paso:
  5. Guarda iniciativas.csv: una fila por proyecto/proposicion con el texto OFICIAL completo.
  6. Anota en 'sin_clasificar' todo lo que no sabe clasificar, para revisarlo a mano.
 """
-import csv, hashlib, json, re, sys, time, urllib.request
+import csv, hashlib, json, re, sys, time, urllib.error, urllib.request
 from collections import Counter
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -29,10 +29,23 @@ GUARDA = ("PONER_" in CONTACTO)
 UA = {"User-Agent": f"Euthyna/0.4 (proyecto ciudadano; datos abiertos; +{CONTACTO})"}
 
 
+MAX_PETICIONES = 12   # tope de seguridad por ejecucion (lo normal son 5)
+peticiones = 0
+
+
 def descargar(url):
+    global peticiones
+    peticiones += 1
+    if peticiones > MAX_PETICIONES:
+        sys.exit(f"Tope de {MAX_PETICIONES} peticiones alcanzado. Paramos.")
     time.sleep(2)   # pausa de cortesia entre peticiones
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
-        return r.read()
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+            return r.read()
+    except urllib.error.HTTPError as e:
+        if e.code in (403, 429):   # nos piden parar: paramos del todo, sin reintentar
+            sys.exit(f"El Congreso respondio {e.code} en {url}. Paramos sin insistir.")
+        raise
 
 
 def limpiar(texto):

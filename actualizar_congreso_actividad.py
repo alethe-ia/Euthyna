@@ -17,7 +17,7 @@ Que hace, paso a paso:
  5. Si una pagina concreta viene vacia (pasa: el servidor del Congreso a veces falla en una),
     la anota en "paginas_fallidas" y sigue. Si algo grave falla o el resultado es sospechosamente pequeno, NO toca los archivos anteriores.
 """
-import csv, gzip, hashlib, http.cookiejar, json, sys, time, urllib.parse, urllib.request
+import csv, gzip, hashlib, http.cookiejar, json, sys, time, urllib.error, urllib.parse, urllib.request
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -34,16 +34,26 @@ CRUDO = RAIZ / "crudo"
 CONTACTO = "https://github.com/alethe-ia/Euthyna"
 GUARDA = ("PONER_" in CONTACTO)
 PAUSA = 2.0   # segundos entre peticiones (antes 1)
+MAX_PETICIONES = 800   # tope de seguridad por ejecucion (lo normal son unas 660); si se supera, se para todo
+peticiones = 0
 UA = {"User-Agent": f"Euthyna/0.5 (proyecto ciudadano; datos abiertos; +{CONTACTO})"}
 COLUMNAS = ["id_iniciativa", "codigo_tipo", "legislatura", "titulo", "autor", "fecha_presentado",
             "fecha_calificado", "resultado_tram", "comision_competente", "tipo_tramitacion",
             "tramitacion_seguida", "fase", "iniciativas_origen", "enlaces_bocg", "enlaces_ds"]
+
+class Bloqueado(Exception):
+    """El Congreso ha contestado 403 (prohibido) o 429 (demasiadas peticiones): se para TODO, sin insistir."""
+
 
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
 
 
 def pedir(url, datos=None):
+    global peticiones
+    peticiones += 1
+    if peticiones > MAX_PETICIONES:
+        raise Bloqueado(f"Tope de {MAX_PETICIONES} peticiones alcanzado en esta ejecucion. Paramos.")
     req = urllib.request.Request(url, headers=UA)
     if datos is not None:
         req = urllib.request.Request(url, data=urllib.parse.urlencode(datos).encode(), headers={
@@ -69,6 +79,14 @@ def pagina(n):
             if not isinstance(lista, list):
                 raise ValueError("la respuesta no es una lista")
             return texto, lista
+        except Bloqueado:
+            raise                        # tope de peticiones: no se reintenta
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 429):     # nos piden parar: paramos del todo
+                raise Bloqueado(f"El Congreso respondio {e.code} en la pagina {n}. Paramos sin insistir.")
+            ultimo = e
+            print(f"  pagina {n}: intento {intento} fallido ({e})", flush=True)
+            time.sleep(5 * intento)
         except Exception as e:           # red caida, JSON roto, etc.
             ultimo = e
             print(f"  pagina {n}: intento {intento} fallido ({e})", flush=True)
@@ -79,7 +97,13 @@ def pagina(n):
 def main():
     if GUARDA:
         raise RuntimeError("Falta el contacto (CONTACTO) en el script. No se hace nada.")
-    pedir(PAGINA)                         # recibe la cookie de sesion
+    try:
+        pedir(PAGINA)                     # recibe la cookie de sesion
+    except urllib.error.HTTPError as e:
+        if e.code in (403, 429):
+            raise Bloqueado(f"El Congreso respondio {e.code} al entrar en el buscador. Paramos sin insistir.")
+        raise
+    time.sleep(PAUSA)                     # pausa tambien antes de la primera pagina
     todas, crudas, n = {}, [], 1
     fallidas = []
     while n <= 3000:

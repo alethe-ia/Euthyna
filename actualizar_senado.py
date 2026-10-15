@@ -48,6 +48,8 @@ avisos = []
 cortado = False
 bloqueado = False     # el Senado ha contestado 403/429: se para todo
 BLOQUEO_DIAS = 7      # tras un 403/429 no se vuelve a pedir nada en 7 dias (revisar a mano)
+MAX_PETICIONES = 200  # tope de seguridad por ejecucion (la primera descarga completa son unas 120)
+peticiones = 0
 YA_HECHO_HORAS = 20   # si la ultima descarga completa fue hace menos de 20 h, los turnos siguientes no piden nada
 
 
@@ -72,8 +74,13 @@ def reciente(manifiesto_previo, ruta, dias):
 def pedir(url, intentos=4):
     """Devuelve bytes, o None si el servidor dice que no existe (404/500). Reintenta si falla la red.
     Si contesta 403 o 429 (prohibido / demasiadas peticiones) NO reintenta: marca 'bloqueado' y se para todo."""
-    global bloqueado, cortado
+    global bloqueado, cortado, peticiones
     for i in range(intentos):
+        if peticiones >= MAX_PETICIONES:
+            cortado = True
+            avisos.append(f"Tope de {MAX_PETICIONES} peticiones alcanzado en esta ejecucion. Se para; sigue la noche siguiente.")
+            return None
+        peticiones += 1
         try:
             req = urllib.request.Request(url, headers=UA)
             with urllib.request.urlopen(req, timeout=60) as r:
