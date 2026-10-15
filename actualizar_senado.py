@@ -46,6 +46,9 @@ MADRID = ZoneInfo("Europe/Madrid")
 
 avisos = []
 cortado = False
+bloqueado = False     # el Senado ha contestado 403/429: se para todo
+BLOQUEO_DIAS = 7      # tras un 403/429 no se vuelve a pedir nada en 7 dias (revisar a mano)
+YA_HECHO_HORAS = 20   # si la ultima descarga completa fue hace menos de 20 h, los turnos siguientes no piden nada
 
 
 def dentro_de_horario():
@@ -67,7 +70,9 @@ def reciente(manifiesto_previo, ruta, dias):
 
 
 def pedir(url, intentos=4):
-    """Devuelve bytes, o None si el servidor dice que no existe (404/500). Reintenta si falla la red."""
+    """Devuelve bytes, o None si el servidor dice que no existe (404/500). Reintenta si falla la red.
+    Si contesta 403 o 429 (prohibido / demasiadas peticiones) NO reintenta: marca 'bloqueado' y se para todo."""
+    global bloqueado, cortado
     for i in range(intentos):
         try:
             req = urllib.request.Request(url, headers=UA)
@@ -76,11 +81,19 @@ def pedir(url, intentos=4):
         except urllib.error.HTTPError as e:
             if e.code in (404, 500):      # el Senado usa 500 para "no existe"
                 return None
+            if e.code in (403, 429):
+                bloqueado = True
+                avisos.append(f"El Senado respondio {e.code} en {url}. Se detiene todo.")
+                return None
             err = f"HTTP {e.code} {e.reason}"
         except Exception as e:             # red caida, tiempo agotado...
             err = f"{type(e).__name__}: {e}"
         print(f"  intento {i + 1} fallido en {url}: {err}", flush=True)
         time.sleep(PAUSA)          # tambien entre reintentos: el Senado pide 60 s entre peticiones
+        if i < intentos - 1 and not dentro_de_horario():   # no reintentar pasadas las 06:00
+            cortado = True
+            avisos.append(f"Se acabo la ventana horaria del Senado antes de reintentar {url}: {err}")
+            return None
     avisos.append(f"No se pudo bajar {url}: {err}")
     return None
 
@@ -123,12 +136,25 @@ def main():
     previos = previo.get("archivos", {})
     no_publicadas = previo.get("sesiones_no_publicadas", {})   # {"20": "2026-10-05", ...}
     manifiesto = {}
+    ahora = datetime.now(timezone.utc)
+    marca = previo.get("bloqueado_utc")
+    if marca and ahora - datetime.fromisoformat(marca) < timedelta(days=BLOQUEO_DIAS):
+        sys.exit(f"El Senado contesto 403/429 el {marca}. No se pide nada durante {BLOQUEO_DIAS} dias: hay que revisarlo a mano "
+                 "(borrar 'bloqueado_utc' de datos/senado/manifiesto.json solo cuando se haya entendido el motivo).")
+    ult = previo.get("ultima_descarga_utc")
+    if previo.get("completo") and ult and ahora - datetime.fromisoformat(ult) < timedelta(hours=YA_HECHO_HORAS):
+        print(f"La ultima descarga completa fue el {ult}. Hoy no se pide nada al Senado.")
+        return
 
     # 1. lista de iniciativas (1 peticion al dia)
     url = f"{FICH}?tipoFich=9&legis={LEGIS}"
     crudo = pedir(url)
     esperar()
     if not crudo:
+        if bloqueado:
+            previo["bloqueado_utc"] = ahora.isoformat(timespec="seconds")
+            previo["avisos"] = avisos
+            ruta_m.write_text(json.dumps(previo, ensure_ascii=False, indent=2), "utf-8")
         sys.exit("No consigo la lista de iniciativas del Senado. No se escribe nada. Detalle: " + "; ".join(avisos))
     guardar(CRUDO / "iniciativas.xml", crudo, manifiesto, url)
 
@@ -142,32 +168,42 @@ def main():
             cortado = True; break
         url = f"{FICH}?tipoFich=3&tipoEx={t}&numEx={n}"
         c = pedir(url)
+        if bloqueado or cortado:
+            break
         esperar()
         if c:
             guardar(ruta, c, manifiesto, url)
 
-    # 3. sesiones plenarias con votaciones (solo las nuevas; las no publicadas se reintentan 1 vez por semana)
+    # 3. sesiones plenarias con votaciones (solo las nuevas).
+    #    - Las sesiones ya bajadas no se piden otra vez.
+    #    - Un hueco INTERNO (sesion no publicada, p. ej. la 20) se reintenta como mucho una vez por semana.
+    #    - Mas alla de la ultima sesion publicada solo se pregunta cada dia por la SIGUIENTE; las demas, una vez por semana.
     huecos, n, buenas = 0, 0, 0
     hoy = datetime.now(MADRID).date()
-    while huecos < FALLOS_SEGUIDOS and not cortado:
+    existentes = [int(p.stem.split("_")[1]) for p in (CRUDO / "votaciones").glob("ses_*.xml") if p.stem.split("_")[1].isdigit()]
+    ultima = max(existentes, default=0)
+    while huecos < FALLOS_SEGUIDOS and not cortado and not bloqueado:
         n += 1
         ruta = CRUDO / "votaciones" / f"ses_{n}.xml"
         if ruta.exists():
             buenas += 1; huecos = 0
             continue
         visto = no_publicadas.get(str(n))
-        if visto and (hoy - datetime.fromisoformat(visto).date()).days < 7 and buenas:
-            huecos = 0   # hueco conocido: no se vuelve a pedir esta semana
+        reciente_no = bool(visto) and (hoy - datetime.fromisoformat(visto).date()).days < 7
+        if reciente_no and n != ultima + 1:
+            huecos = huecos + 1 if n > ultima else 0   # hueco conocido: no se vuelve a pedir esta semana
             continue
         if not dentro_de_horario():
             cortado = True; break
         url = f"{BASE}/legis{LEGIS}/votaciones/ses_{n}.xml"
         c = pedir(url)
+        if bloqueado or cortado:
+            break      # cortado en pleno reintento: no es un hueco, no se apunta como 'no publicada'
         esperar()
         if c and b"<" in c[:200]:
             guardar(ruta, c, manifiesto, url)
             no_publicadas.pop(str(n), None)
-            buenas += 1; huecos = 0
+            buenas += 1; huecos = 0; ultima = max(ultima, n)
         else:
             huecos += 1
             no_publicadas[str(n)] = hoy.isoformat()
@@ -180,9 +216,12 @@ def main():
         "fuente": "Senado de España, datos abiertos (CC-BY 4.0): https://www.senado.es/web/relacionesciudadanos/datosabiertos/",
         "legislatura": LEGIS, "ultima_descarga_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "leyes_encontradas": len(leyes), "sesiones_con_votaciones": sum(1 for k in archivos if "/votaciones/" in k),
-        "sesiones_no_publicadas": no_publicadas, "completo": not cortado,
+        "sesiones_no_publicadas": no_publicadas, "completo": not cortado and not bloqueado,
+        **({"bloqueado_utc": ahora.isoformat(timespec="seconds")} if bloqueado else {}),
         "avisos": avisos, "archivos": archivos}, ensure_ascii=False, indent=2), "utf-8")
     print(f"Listo: {len(leyes)} leyes, {buenas} sesiones con votaciones, {len(avisos)} avisos (ver manifiesto.json)")
+    if bloqueado:
+        sys.exit(2)   # que el flujo salga en rojo: el Senado ha dicho que paremos
 
 
 if __name__ == "__main__":
