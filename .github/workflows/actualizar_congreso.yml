@@ -1,0 +1,43 @@
+name: Actualizar datos del Congreso
+# Congreso: su robots.txt no pide horario ni espera, pero vamos con cortesia.
+# Iniciativas (5 peticiones): cada dia. Actividad completa (unas 660 peticiones, 2 s de pausa): una vez por semana (lunes).
+on:
+  schedule:
+    - cron: "30 5 * * *"   # cada dia, 05:30 UTC
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: euthyna-datos        # comparte turno con el flujo del Senado para que no se pisen al guardar
+  cancel-in-progress: false
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Iniciativas legislativas del Congreso (diario)
+        run: python3 actualizar_congreso_iniciativas_legislativas.py
+      - name: Que dia es (la actividad completa solo se baja los lunes)
+        id: dia
+        run: |
+          if [ "$(date -u +%u)" = "1" ]; then echo "lunes=si" >> "$GITHUB_OUTPUT"; else echo "lunes=no" >> "$GITHUB_OUTPUT"; fi
+      - name: Actividad completa de la legislatura XV (lunes o a mano)
+        if: github.event_name == 'workflow_dispatch' || steps.dia.outputs.lunes == 'si'
+        run: python3 actualizar_congreso_actividad.py 15
+      - name: Guardar el original sin tocar (90 dias)
+        uses: actions/upload-artifact@v4
+        with:
+          name: originales-congreso
+          path: crudo/
+          if-no-files-found: ignore
+      - name: Guardar cambios
+        run: |
+          git config user.name "euthyna-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A datos
+          git diff --cached --quiet || git commit -m "Datos del Congreso actualizados"
+          git pull --rebase
+          git push
