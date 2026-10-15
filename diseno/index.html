@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Euthyna · El Congreso, sin jerga</title>
+  <meta name="description" content="Herramienta ciudadana de rendición de cuentas parlamentaria: quién decide qué, cómo lo vota y si cumple lo que promete.">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="aviso-prototipo" role="note"><strong>Prototipo de diseño.</strong> Todas las cifras, votaciones y nombres de grupos son inventados y no describen la actividad real del Congreso.</div>
+
+  <header class="barra">
+    <div class="contenedor barra__interior">
+      <a class="barra__marca" href="#inicio">Euthyna</a>
+      <nav class="barra__enlaces" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#temas">Temas</a>
+        <a href="#sobre-esto">Sobre esto</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="contenedor">
+
+        <h1 class="hero__titular">El Congreso, sin jerga.</h1>
+
+        <p class="hero__subtitulo">Toda la actividad parlamentaria de la legislatura actual. En español. Sin ruido, sin opiniones.</p>
+
+        <p class="estado-linea">
+          <span class="vivo"><span class="vivo__punto" aria-hidden="true"></span>En vivo</span>
+          <span aria-hidden="true">·</span>
+          <span>1.247 iniciativas · Actualizado hoy</span>
+        </p>
+
+        <nav id="temas-etiquetas" class="temas" aria-label="Temas">
+          <a class="pildora" href="#temas">Vivienda</a>
+          <a class="pildora" href="#temas">Economía</a>
+          <a class="pildora" href="#temas">Sanidad</a>
+          <a class="pildora" href="#temas">Educación</a>
+          <a class="pildora" href="#temas">Inmigración</a>
+          <a class="pildora" href="#temas">Empleo</a>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- Barra de tiempo: últimos 7 días -->
+    <section class="tiempo" aria-label="Iniciativas registradas en los últimos 7 días">
+      <div class="tiempo__linea" aria-hidden="true"></div>
+      <div class="contenedor">
+        <ol class="tiempo__lista">
+
+          <li class="dia" style="--n: 2">
+            <span class="dia__zona" tabindex="0" aria-label="Sábado 26 de septiembre: 2 iniciativas">
+              <span class="dia__punto"></span>
+              <span class="dia__tip"><strong>Sáb 26 sep</strong>2 iniciativas</span>
+            </span>
+            <span class="dia__nombre">Sáb</span>
+          </li>
+
+          <li class="dia" style="--n: 0">
+            <span class="dia__zona" tabindex="0" aria-label="Domingo 27 de septiembre: 0 iniciativas">
+              <span class="dia__punto"></span>
+              <span class="dia__tip"><strong>Dom 27 sep</strong>0 iniciativas</span>
+            </span>
+            <span class="dia__nombre">Dom</span>
+          </li>
+
+          <li class="dia" style="--n: 14">
+            <span class="dia__zona" tabindex="0" aria-label="Lunes 28 de septiembre: 14 iniciativas">
+              <span class="dia__punto"></span>
+              <span class="dia__tip"><strong>Lun 28 sep</strong>14 iniciativas</span>
+            </span>
+            <span class="dia__nombre">Lun</span>
+          </li>
+
+          <li class="dia" style="--n: 9">
+            <span class="dia__zona" tabindex="0" aria-label="Martes 29 de septiembre: 9 iniciativas">
+              <span class="dia__punto"></span>
+              <span class="dia__tip"><strong>Mar 29 sep</strong>9 iniciativas</span>
+            </span>
+            <span class="dia__nombre">Mar</span>
+          </li>
+
+          <li class="dia" style="--n: 18">
+            <span class="dia__zona" tabindex="0" aria-label="Miércoles 30 de septiembre: 18 iniciativas">
+              <span class="dia__punto"></span>
+              <span class="dia__tip"><strong>Mié 30 sep</strong>18 iniciativas</span>
+            </span>
+            <span class="dia__nombre">Mié</span>
+          </li>
+
+          <li class="dia" style="--n: 11">
+            <span class="dia__zona" tabindex="0" aria-label="Jueves 1 de octubre: 11 iniciativas">
+              <span class="dia__punto"></span>
+              <span class="dia__tip"><strong>Jue 1 oct</strong>11 iniciativas</span>
+            </span>
+            <span class="dia__nombre">Jue</span>
+          </li>
+
+          <li class="dia dia--hoy" aria-current="date" style="--n: 6">
+            <span class="dia__zona" tabindex="0" aria-label="Hoy, viernes 2 de octubre: 6 iniciativas">
+              <span class="dia__punto"></span>
+              <span class="dia__tip"><strong>Hoy · Vie 2 oct</strong>6 iniciativas</span>
+            </span>
+            <span class="dia__nombre">Hoy</span>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- 1 · Lo último -->
+    <section class="seccion seccion--alterna" id="ultimo" aria-labelledby="ultimo-titulo">
+      <div class="contenedor">
+        <h2 id="ultimo-titulo" class="seccion__titulo aparece">Lo último</h2>
+        <p class="seccion__lead aparece">Las votaciones más recientes, con el sentido del voto de cada grupo.</p>
+        <div class="ultimo__tarjetas">
+          <article class="tarjeta aparece">
+            <p class="tarjeta__tema">Vivienda</p>
+            <h3 class="tarjeta__titulo">El Congreso debate limitar el precio del alquiler</h3>
+            <p class="tarjeta__resumen">Propuesta para fijar un tope máximo al precio de los alquileres en zonas tensionadas.</p>
+            <p class="tarjeta__resultado"><span class="estado estado--aprobada"><span class="estado__punto" aria-hidden="true"></span>Aprobada</span></p>
+            <ul class="votos" aria-label="Cómo ha votado cada grupo"><li><span>PP</span><span>En contra</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>En contra</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>Abstención</span></li></ul>
+            <div class="tarjeta__pie">
+              <time datetime="2026-10-02">2 oct 2026</time>
+              <a class="enlace" href="#votacion-V01" data-abre="V01">Ver detalle</a>
+            </div>
+          </article>
+          <article class="tarjeta aparece">
+            <p class="tarjeta__tema">Sanidad</p>
+            <h3 class="tarjeta__titulo">Tiempo máximo de espera para consultas con especialistas</h3>
+            <p class="tarjeta__resumen">Fija un plazo máximo de 30 días para que te atienda un especialista en la sanidad pública.</p>
+            <p class="tarjeta__resultado"><span class="estado estado--tramite"><span class="estado__punto" aria-hidden="true"></span>En trámite</span></p>
+            <ul class="votos" aria-label="Cómo ha votado cada grupo"><li><span>PP</span><span>A favor</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>Abstención</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>En contra</span></li></ul>
+            <div class="tarjeta__pie">
+              <time datetime="2026-09-30">30 sep 2026</time>
+              <a class="enlace" href="#votacion-V02" data-abre="V02">Ver detalle</a>
+            </div>
+          </article>
+          <article class="tarjeta aparece">
+            <p class="tarjeta__tema">Economía</p>
+            <h3 class="tarjeta__titulo">Rebaja del IRPF para rentas bajas</h3>
+            <p class="tarjeta__resumen">Propuesta para reducir el tramo autonómico del IRPF a quienes ganan menos de 30.000 euros al año.</p>
+            <p class="tarjeta__resultado"><span class="estado estado--rechazada"><span class="estado__punto" aria-hidden="true"></span>Rechazada</span></p>
+            <ul class="votos" aria-label="Cómo ha votado cada grupo"><li><span>PP</span><span>A favor</span></li><li><span>PSOE</span><span>En contra</span></li><li><span>Vox</span><span>A favor</span></li><li><span>Sumar</span><span>En contra</span></li><li><span>ERC</span><span>En contra</span></li><li><span>Junts</span><span>Abstención</span></li></ul>
+            <div class="tarjeta__pie">
+              <time datetime="2026-09-29">29 sep 2026</time>
+              <a class="enlace" href="#votacion-V03" data-abre="V03">Ver detalle</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · El estado de la legislatura -->
+    <section class="seccion" id="legislatura" aria-labelledby="leg-titulo">
+      <div class="contenedor">
+        <h2 id="leg-titulo" class="seccion__titulo aparece">El estado de la legislatura</h2>
+        <p class="seccion__lead aparece">Cuántas iniciativas se han registrado y en qué punto está cada una.</p>
+
+        <div class="grandes aparece">
+          <div class="grande"><p class="grande__n">1.247</p><p class="grande__e">iniciativas registradas</p></div>
+          <div class="grande"><p class="grande__n">312</p><p class="grande__e"><span class="estado__punto estado__punto--aprobada" aria-hidden="true"></span>aprobadas</p></div>
+          <div class="grande"><p class="grande__n">748</p><p class="grande__e"><span class="estado__punto estado__punto--tramite" aria-hidden="true"></span>en trámite</p></div>
+          <div class="grande"><p class="grande__n">187</p><p class="grande__e"><span class="estado__punto estado__punto--rechazada" aria-hidden="true"></span>rechazadas o caducadas</p></div>
+        </div>
+
+        <div class="reparto aparece">
+          <div class="donut">
+            <svg viewBox="0 0 200 200" role="img" aria-label="Reparto de iniciativas por estado: 25% aprobadas, 60% en trámite, 15% rechazadas o caducadas">
+              <circle cx="100" cy="100" r="80" fill="none" stroke="#E5E5E5" stroke-width="30"/>
+              <circle class="donut__seg" cx="100" cy="100" r="80" fill="none" stroke="#1E7A3E" stroke-width="30" stroke-dasharray="123.76 378.89" stroke-dashoffset="0.00" transform="rotate(-90 100 100)"/><circle class="donut__seg" cx="100" cy="100" r="80" fill="none" stroke="#D97706" stroke-width="30" stroke-dasharray="299.51 203.14" stroke-dashoffset="-125.76" transform="rotate(-90 100 100)"/><circle class="donut__seg" cx="100" cy="100" r="80" fill="none" stroke="#8B1F1F" stroke-width="30" stroke-dasharray="73.38 429.28" stroke-dashoffset="-427.28" transform="rotate(-90 100 100)"/>
+            </svg>
+            <div class="donut__centro"><span class="donut__total">1.247</span><span class="donut__etq">iniciativas</span></div>
+          </div>
+          <ul class="leyenda">
+            <li><span class="estado__punto estado__punto--aprobada" aria-hidden="true"></span><span>Aprobadas</span><strong>25%</strong></li>
+            <li><span class="estado__punto estado__punto--tramite" aria-hidden="true"></span><span>En trámite</span><strong>60%</strong></li>
+            <li><span class="estado__punto estado__punto--rechazada" aria-hidden="true"></span><span>Rechazadas o caducadas</span><strong>15%</strong></li>
+          </ul>
+        </div>
+
+        <p class="comparativa aparece">Frente a la legislatura XIV: <strong>-32%</strong> de leyes aprobadas.</p>
+      </div>
+    </section>
+
+    <!-- 3 · Actividad por tema -->
+    <section class="seccion seccion--alterna" id="temas" aria-labelledby="temas-titulo">
+      <div class="contenedor">
+        <h2 id="temas-titulo" class="seccion__titulo aparece">Actividad por tema</h2>
+        <p class="seccion__lead aparece">En qué se está concentrando el trabajo del Congreso.</p>
+        <div class="temas-grid">
+        <article class="tema aparece">
+          <h3 class="tema__nombre">Vivienda</h3>
+          <p class="tema__cifra">312<span> iniciativas</span></p>
+          <div class="tema__pista" role="img" aria-label="25% del total"><span class="tema__relleno" style="width:100.0%"></span></div>
+          <p class="tema__peso">25% del total · el tema más activo</p>
+          <p class="tema__frase">Alquiler, precio de la vivienda y suelo público.</p>
+        </article>
+        <article class="tema aparece">
+          <h3 class="tema__nombre">Sanidad</h3>
+          <p class="tema__cifra">187<span> iniciativas</span></p>
+          <div class="tema__pista" role="img" aria-label="15% del total"><span class="tema__relleno" style="width:59.9%"></span></div>
+          <p class="tema__peso">15% del total</p>
+          <p class="tema__frase">Listas de espera, atención primaria y financiación del sistema público.</p>
+        </article>
+        <article class="tema aparece">
+          <h3 class="tema__nombre">Economía</h3>
+          <p class="tema__cifra">178<span> iniciativas</span></p>
+          <div class="tema__pista" role="img" aria-label="14% del total"><span class="tema__relleno" style="width:57.1%"></span></div>
+          <p class="tema__peso">14% del total</p>
+          <p class="tema__frase">Impuestos, pensiones y ayudas a autónomos y empresas.</p>
+        </article>
+        <article class="tema aparece">
+          <h3 class="tema__nombre">Empleo</h3>
+          <p class="tema__cifra">154<span> iniciativas</span></p>
+          <div class="tema__pista" role="img" aria-label="12% del total"><span class="tema__relleno" style="width:49.4%"></span></div>
+          <p class="tema__peso">12% del total</p>
+          <p class="tema__frase">Jornada laboral, salarios y protección frente al paro.</p>
+        </article>
+        <article class="tema aparece">
+          <h3 class="tema__nombre">Educación</h3>
+          <p class="tema__cifra">132<span> iniciativas</span></p>
+          <div class="tema__pista" role="img" aria-label="11% del total"><span class="tema__relleno" style="width:42.3%"></span></div>
+          <p class="tema__peso">11% del total</p>
+          <p class="tema__frase">Becas, alumnos por aula y formación profesional.</p>
+        </article>
+        <article class="tema aparece">
+          <h3 class="tema__nombre">Inmigración</h3>
+          <p class="tema__cifra">98<span> iniciativas</span></p>
+          <div class="tema__pista" role="img" aria-label="8% del total"><span class="tema__relleno" style="width:31.4%"></span></div>
+          <p class="tema__peso">8% del total</p>
+          <p class="tema__frase">Permisos de trabajo, acogida y reparto de menores.</p>
+        </article>
+        </div>
+        <p class="nota aparece">Los seis temas suman 1.061 iniciativas. Las otras 186 corresponden a justicia, cultura, medio ambiente, España en el mundo y otros asuntos.</p>
+      </div>
+    </section>
+
+    <!-- 4 · Votaciones -->
+    <section class="seccion" id="votaciones" aria-labelledby="vot-titulo">
+      <div class="contenedor">
+        <h2 id="vot-titulo" class="seccion__titulo aparece">Votaciones</h2>
+        <p class="seccion__lead aparece">Qué se ha votado, cómo ha ido y qué ha votado cada grupo.</p>
+
+        <div class="vistas aparece" role="tablist" aria-label="Vista de votaciones">
+          <button type="button" class="vistas__btn vistas__btn--on" role="tab" aria-selected="true" data-vista="votacion">Por votación</button>
+          <button type="button" class="vistas__btn" role="tab" aria-selected="false" data-vista="grupo">Por grupo</button>
+        </div>
+
+        <div class="vista" data-panel="votacion">
+          <div class="lista">
+          <details class="votacion" id="votacion-V01">
+            <summary>
+              <time datetime="2026-10-02">2 oct 2026</time>
+              <span class="votacion__titulo">El Congreso debate limitar el precio del alquiler<span class="votacion__tema">Vivienda</span></span>
+              <span class="votacion__resultado"><span class="estado estado--aprobada"><span class="estado__punto" aria-hidden="true"></span>Aprobada</span></span>
+              <span class="rbarra" role="img" aria-label="172 a favor, 168 en contra, 7 abstenciones, 3 sin votar"><span class="rbarra__f" style="width:49.14%"></span><span class="rbarra__c" style="width:48.00%"></span><span class="rbarra__a" style="width:2.00%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>En contra</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>En contra</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>Abstención</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">172 a favor · 168 en contra · 7 abstenciones · 3 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">1 diputado de Sumar votó «en contra» (el grupo votó «a favor»)</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">3 diputados de PP</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 130</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V02">
+            <summary>
+              <time datetime="2026-09-30">30 sep 2026</time>
+              <span class="votacion__titulo">Tiempo máximo de espera para consultas con especialistas<span class="votacion__tema">Sanidad</span></span>
+              <span class="votacion__resultado"><span class="estado estado--tramite"><span class="estado__punto" aria-hidden="true"></span>En trámite</span></span>
+              <span class="rbarra" role="img" aria-label="304 a favor, 7 en contra, 36 abstenciones, 3 sin votar"><span class="rbarra__f" style="width:86.86%"></span><span class="rbarra__c" style="width:2.00%"></span><span class="rbarra__a" style="width:10.29%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>A favor</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>Abstención</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>En contra</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">304 a favor · 7 en contra · 36 abstenciones · 3 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">Ninguno.</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">2 diputados de PSOE; 1 diputado de Vox</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 128</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V03">
+            <summary>
+              <time datetime="2026-09-29">29 sep 2026</time>
+              <span class="votacion__titulo">Rebaja del IRPF para rentas bajas<span class="votacion__tema">Economía</span></span>
+              <span class="votacion__resultado"><span class="estado estado--rechazada"><span class="estado__punto" aria-hidden="true"></span>Rechazada</span></span>
+              <span class="rbarra" role="img" aria-label="160 a favor, 167 en contra, 7 abstenciones, 16 sin votar"><span class="rbarra__f" style="width:45.71%"></span><span class="rbarra__c" style="width:47.71%"></span><span class="rbarra__a" style="width:2.00%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>A favor</span></li><li><span>PSOE</span><span>En contra</span></li><li><span>Vox</span><span>A favor</span></li><li><span>Sumar</span><span>En contra</span></li><li><span>ERC</span><span>En contra</span></li><li><span>Junts</span><span>Abstención</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">160 a favor · 167 en contra · 7 abstenciones · 16 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">Ninguno.</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">12 diputados de PP; 4 diputados de PSOE</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 126</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V04">
+            <summary>
+              <time datetime="2026-09-24">24 sep 2026</time>
+              <span class="votacion__titulo">Permisos de trabajo más rápidos para quien tiene oferta de empleo<span class="votacion__tema">Inmigración</span></span>
+              <span class="votacion__resultado"><span class="estado estado--aprobada"><span class="estado__punto" aria-hidden="true"></span>Aprobada</span></span>
+              <span class="rbarra" role="img" aria-label="183 a favor, 31 en contra, 134 abstenciones, 2 sin votar"><span class="rbarra__f" style="width:52.29%"></span><span class="rbarra__c" style="width:8.86%"></span><span class="rbarra__a" style="width:38.29%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>Abstención</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>En contra</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>A favor</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">183 a favor · 31 en contra · 134 abstenciones · 2 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">6 diputados de PP votaron «a favor» (el grupo votó «abstención»)</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">2 diputados de Vox</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 124</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V05">
+            <summary>
+              <time datetime="2026-09-22">22 sep 2026</time>
+              <span class="votacion__titulo">Becas de comedor en todos los colegios<span class="votacion__tema">Educación</span></span>
+              <span class="votacion__resultado"><span class="estado estado--aprobada"><span class="estado__punto" aria-hidden="true"></span>Aprobada</span></span>
+              <span class="rbarra" role="img" aria-label="309 a favor, 0 en contra, 33 abstenciones, 8 sin votar"><span class="rbarra__f" style="width:88.29%"></span><span class="rbarra__c" style="width:0.00%"></span><span class="rbarra__a" style="width:9.43%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>A favor</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>Abstención</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>A favor</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">309 a favor · 0 en contra · 33 abstenciones · 8 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">Ninguno.</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">5 diputados de PP; 3 diputados de PSOE</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 122</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V06">
+            <summary>
+              <time datetime="2026-09-17">17 sep 2026</time>
+              <span class="votacion__titulo">Reducción de la jornada laboral a 37,5 horas<span class="votacion__tema">Empleo</span></span>
+              <span class="votacion__resultado"><span class="estado estado--rechazada"><span class="estado__punto" aria-hidden="true"></span>Rechazada</span></span>
+              <span class="rbarra" role="img" aria-label="155 a favor, 185 en contra, 4 abstenciones, 6 sin votar"><span class="rbarra__f" style="width:44.29%"></span><span class="rbarra__c" style="width:52.86%"></span><span class="rbarra__a" style="width:1.14%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>En contra</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>En contra</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>En contra</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">155 a favor · 185 en contra · 4 abstenciones · 6 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">Ninguno.</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">6 diputados de PSOE</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 120</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V07">
+            <summary>
+              <time datetime="2026-09-15">15 sep 2026</time>
+              <span class="votacion__titulo">Más vivienda pública en suelo del Estado<span class="votacion__tema">Vivienda</span></span>
+              <span class="votacion__resultado"><span class="estado estado--aprobada"><span class="estado__punto" aria-hidden="true"></span>Aprobada</span></span>
+              <span class="rbarra" role="img" aria-label="176 a favor, 35 en contra, 135 abstenciones, 4 sin votar"><span class="rbarra__f" style="width:50.29%"></span><span class="rbarra__c" style="width:10.00%"></span><span class="rbarra__a" style="width:38.57%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>Abstención</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>En contra</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>A favor</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">176 a favor · 35 en contra · 135 abstenciones · 4 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">2 diputados de Junts votaron «en contra» (el grupo votó «a favor»)</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">4 diputados de PP</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 118</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V08">
+            <summary>
+              <time datetime="2026-09-10">10 sep 2026</time>
+              <span class="votacion__titulo">Registro único de alquileres turísticos<span class="votacion__tema">Vivienda</span></span>
+              <span class="votacion__resultado"><span class="estado estado--aprobada"><span class="estado__punto" aria-hidden="true"></span>Aprobada</span></span>
+              <span class="rbarra" role="img" aria-label="344 a favor, 0 en contra, 1 abstenciones, 5 sin votar"><span class="rbarra__f" style="width:98.29%"></span><span class="rbarra__c" style="width:0.00%"></span><span class="rbarra__a" style="width:0.29%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>A favor</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>A favor</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>A favor</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">344 a favor · 0 en contra · 1 abstenciones · 5 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">1 diputado de ERC votó «abstención» (el grupo votó «a favor»)</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">3 diputados de Vox; 2 diputados de PSOE</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 116</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V09">
+            <summary>
+              <time datetime="2026-09-08">8 sep 2026</time>
+              <span class="votacion__titulo">Subida de las pensiones mínimas<span class="votacion__tema">Economía</span></span>
+              <span class="votacion__resultado"><span class="estado estado--aprobada"><span class="estado__punto" aria-hidden="true"></span>Aprobada</span></span>
+              <span class="rbarra" role="img" aria-label="341 a favor, 0 en contra, 7 abstenciones, 2 sin votar"><span class="rbarra__f" style="width:97.43%"></span><span class="rbarra__c" style="width:0.00%"></span><span class="rbarra__a" style="width:2.00%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>A favor</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>A favor</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>Abstención</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">341 a favor · 0 en contra · 7 abstenciones · 2 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">Ninguno.</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">2 diputados de PP</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 114</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          <details class="votacion" id="votacion-V10">
+            <summary>
+              <time datetime="2026-09-03">3 sep 2026</time>
+              <span class="votacion__titulo">Impuesto permanente a las grandes fortunas<span class="votacion__tema">Economía</span></span>
+              <span class="votacion__resultado"><span class="estado estado--rechazada"><span class="estado__punto" aria-hidden="true"></span>Rechazada</span></span>
+              <span class="rbarra" role="img" aria-label="158 a favor, 181 en contra, 6 abstenciones, 5 sin votar"><span class="rbarra__f" style="width:45.14%"></span><span class="rbarra__c" style="width:51.71%"></span><span class="rbarra__a" style="width:1.71%"></span></span>
+              <span class="votacion__mas">Ver detalle<span class="chev" aria-hidden="true"></span></span>
+            </summary>
+            <div class="detalle">
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Cómo ha votado cada grupo</h4>
+                <ul class="votos"><li><span>PP</span><span>En contra</span></li><li><span>PSOE</span><span>A favor</span></li><li><span>Vox</span><span>En contra</span></li><li><span>Sumar</span><span>A favor</span></li><li><span>ERC</span><span>A favor</span></li><li><span>Junts</span><span>En contra</span></li></ul>
+              </div>
+              <div class="detalle__col">
+                <h4 class="detalle__titulo">Resultado</h4>
+                <p class="detalle__texto">158 a favor · 181 en contra · 6 abstenciones · 5 sin votar</p>
+                <h4 class="detalle__titulo">Quién se ha salido del guion</h4>
+                <p class="detalle__texto">Ninguno.</p>
+                <h4 class="detalle__titulo">Quién no ha ido a votar</h4>
+                <p class="detalle__texto">5 diputados de PSOE</p>
+                <p class="detalle__texto"><a class="enlace" href="#">Diario de Sesiones · Pleno nº 112</a> <span class="meta">(enlace ficticio)</span></p>
+              </div>
+            </div>
+          </details>
+          </div>
+        </div>
+
+        <div class="vista" data-panel="grupo">
+          <div class="lista">
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">PP<span class="meta">Grupo Parlamentario Popular</span></span>
+              <span class="grupo__resumen">5 a favor · 3 en contra · 2 abstención</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo"><div class="filtros"><div class="filtros__chips"><button type="button" class="chip chip--on" data-tema="">Todos los temas</button><button type="button" class="chip" data-tema="Vivienda">Vivienda</button><button type="button" class="chip" data-tema="Sanidad">Sanidad</button><button type="button" class="chip" data-tema="Economía">Economía</button><button type="button" class="chip" data-tema="Empleo">Empleo</button><button type="button" class="chip" data-tema="Educación">Educación</button><button type="button" class="chip" data-tema="Inmigración">Inmigración</button></div>
+                <label class="filtros__fecha">Fecha <select class="select"><option value="all">Toda la legislatura</option><option value="30">Últimos 30 días</option><option value="7">Últimos 7 días</option></select></label></div>
+              <ul class="hist"><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-10-02"><time datetime="2026-10-02">2 oct</time><span class="hist__titulo">El Congreso debate limitar el precio del alquiler<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Sanidad" data-fecha="2026-09-30"><time datetime="2026-09-30">30 sep</time><span class="hist__titulo">Tiempo máximo de espera para consultas con especialistas<span class="votacion__tema">Sanidad</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-29"><time datetime="2026-09-29">29 sep</time><span class="hist__titulo">Rebaja del IRPF para rentas bajas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Inmigración" data-fecha="2026-09-24"><time datetime="2026-09-24">24 sep</time><span class="hist__titulo">Permisos de trabajo más rápidos para quien tiene oferta de empleo<span class="votacion__tema">Inmigración</span></span><span class="hist__voto">Abstención</span></li><li class="hist__fila" data-tema="Educación" data-fecha="2026-09-22"><time datetime="2026-09-22">22 sep</time><span class="hist__titulo">Becas de comedor en todos los colegios<span class="votacion__tema">Educación</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Empleo" data-fecha="2026-09-17"><time datetime="2026-09-17">17 sep</time><span class="hist__titulo">Reducción de la jornada laboral a 37,5 horas<span class="votacion__tema">Empleo</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-15"><time datetime="2026-09-15">15 sep</time><span class="hist__titulo">Más vivienda pública en suelo del Estado<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">Abstención</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-10"><time datetime="2026-09-10">10 sep</time><span class="hist__titulo">Registro único de alquileres turísticos<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-08"><time datetime="2026-09-08">8 sep</time><span class="hist__titulo">Subida de las pensiones mínimas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-03"><time datetime="2026-09-03">3 sep</time><span class="hist__titulo">Impuesto permanente a las grandes fortunas<span class="votacion__tema">Economía</span></span><span class="hist__voto">En contra</span></li></ul>
+              <p class="vacio" hidden>Ninguna votación con estos filtros.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">PSOE<span class="meta">Grupo Parlamentario Socialista</span></span>
+              <span class="grupo__resumen">9 a favor · 1 en contra · 0 abstención</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo"><div class="filtros"><div class="filtros__chips"><button type="button" class="chip chip--on" data-tema="">Todos los temas</button><button type="button" class="chip" data-tema="Vivienda">Vivienda</button><button type="button" class="chip" data-tema="Sanidad">Sanidad</button><button type="button" class="chip" data-tema="Economía">Economía</button><button type="button" class="chip" data-tema="Empleo">Empleo</button><button type="button" class="chip" data-tema="Educación">Educación</button><button type="button" class="chip" data-tema="Inmigración">Inmigración</button></div>
+                <label class="filtros__fecha">Fecha <select class="select"><option value="all">Toda la legislatura</option><option value="30">Últimos 30 días</option><option value="7">Últimos 7 días</option></select></label></div>
+              <ul class="hist"><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-10-02"><time datetime="2026-10-02">2 oct</time><span class="hist__titulo">El Congreso debate limitar el precio del alquiler<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Sanidad" data-fecha="2026-09-30"><time datetime="2026-09-30">30 sep</time><span class="hist__titulo">Tiempo máximo de espera para consultas con especialistas<span class="votacion__tema">Sanidad</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-29"><time datetime="2026-09-29">29 sep</time><span class="hist__titulo">Rebaja del IRPF para rentas bajas<span class="votacion__tema">Economía</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Inmigración" data-fecha="2026-09-24"><time datetime="2026-09-24">24 sep</time><span class="hist__titulo">Permisos de trabajo más rápidos para quien tiene oferta de empleo<span class="votacion__tema">Inmigración</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Educación" data-fecha="2026-09-22"><time datetime="2026-09-22">22 sep</time><span class="hist__titulo">Becas de comedor en todos los colegios<span class="votacion__tema">Educación</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Empleo" data-fecha="2026-09-17"><time datetime="2026-09-17">17 sep</time><span class="hist__titulo">Reducción de la jornada laboral a 37,5 horas<span class="votacion__tema">Empleo</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-15"><time datetime="2026-09-15">15 sep</time><span class="hist__titulo">Más vivienda pública en suelo del Estado<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-10"><time datetime="2026-09-10">10 sep</time><span class="hist__titulo">Registro único de alquileres turísticos<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-08"><time datetime="2026-09-08">8 sep</time><span class="hist__titulo">Subida de las pensiones mínimas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-03"><time datetime="2026-09-03">3 sep</time><span class="hist__titulo">Impuesto permanente a las grandes fortunas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li></ul>
+              <p class="vacio" hidden>Ninguna votación con estos filtros.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">Vox<span class="meta">Grupo Parlamentario VOX</span></span>
+              <span class="grupo__resumen">3 a favor · 5 en contra · 2 abstención</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo"><div class="filtros"><div class="filtros__chips"><button type="button" class="chip chip--on" data-tema="">Todos los temas</button><button type="button" class="chip" data-tema="Vivienda">Vivienda</button><button type="button" class="chip" data-tema="Sanidad">Sanidad</button><button type="button" class="chip" data-tema="Economía">Economía</button><button type="button" class="chip" data-tema="Empleo">Empleo</button><button type="button" class="chip" data-tema="Educación">Educación</button><button type="button" class="chip" data-tema="Inmigración">Inmigración</button></div>
+                <label class="filtros__fecha">Fecha <select class="select"><option value="all">Toda la legislatura</option><option value="30">Últimos 30 días</option><option value="7">Últimos 7 días</option></select></label></div>
+              <ul class="hist"><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-10-02"><time datetime="2026-10-02">2 oct</time><span class="hist__titulo">El Congreso debate limitar el precio del alquiler<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Sanidad" data-fecha="2026-09-30"><time datetime="2026-09-30">30 sep</time><span class="hist__titulo">Tiempo máximo de espera para consultas con especialistas<span class="votacion__tema">Sanidad</span></span><span class="hist__voto">Abstención</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-29"><time datetime="2026-09-29">29 sep</time><span class="hist__titulo">Rebaja del IRPF para rentas bajas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Inmigración" data-fecha="2026-09-24"><time datetime="2026-09-24">24 sep</time><span class="hist__titulo">Permisos de trabajo más rápidos para quien tiene oferta de empleo<span class="votacion__tema">Inmigración</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Educación" data-fecha="2026-09-22"><time datetime="2026-09-22">22 sep</time><span class="hist__titulo">Becas de comedor en todos los colegios<span class="votacion__tema">Educación</span></span><span class="hist__voto">Abstención</span></li><li class="hist__fila" data-tema="Empleo" data-fecha="2026-09-17"><time datetime="2026-09-17">17 sep</time><span class="hist__titulo">Reducción de la jornada laboral a 37,5 horas<span class="votacion__tema">Empleo</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-15"><time datetime="2026-09-15">15 sep</time><span class="hist__titulo">Más vivienda pública en suelo del Estado<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-10"><time datetime="2026-09-10">10 sep</time><span class="hist__titulo">Registro único de alquileres turísticos<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-08"><time datetime="2026-09-08">8 sep</time><span class="hist__titulo">Subida de las pensiones mínimas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-03"><time datetime="2026-09-03">3 sep</time><span class="hist__titulo">Impuesto permanente a las grandes fortunas<span class="votacion__tema">Economía</span></span><span class="hist__voto">En contra</span></li></ul>
+              <p class="vacio" hidden>Ninguna votación con estos filtros.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">Sumar<span class="meta">Grupo Parlamentario Plurinacional SUMAR</span></span>
+              <span class="grupo__resumen">9 a favor · 1 en contra · 0 abstención</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo"><div class="filtros"><div class="filtros__chips"><button type="button" class="chip chip--on" data-tema="">Todos los temas</button><button type="button" class="chip" data-tema="Vivienda">Vivienda</button><button type="button" class="chip" data-tema="Sanidad">Sanidad</button><button type="button" class="chip" data-tema="Economía">Economía</button><button type="button" class="chip" data-tema="Empleo">Empleo</button><button type="button" class="chip" data-tema="Educación">Educación</button><button type="button" class="chip" data-tema="Inmigración">Inmigración</button></div>
+                <label class="filtros__fecha">Fecha <select class="select"><option value="all">Toda la legislatura</option><option value="30">Últimos 30 días</option><option value="7">Últimos 7 días</option></select></label></div>
+              <ul class="hist"><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-10-02"><time datetime="2026-10-02">2 oct</time><span class="hist__titulo">El Congreso debate limitar el precio del alquiler<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Sanidad" data-fecha="2026-09-30"><time datetime="2026-09-30">30 sep</time><span class="hist__titulo">Tiempo máximo de espera para consultas con especialistas<span class="votacion__tema">Sanidad</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-29"><time datetime="2026-09-29">29 sep</time><span class="hist__titulo">Rebaja del IRPF para rentas bajas<span class="votacion__tema">Economía</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Inmigración" data-fecha="2026-09-24"><time datetime="2026-09-24">24 sep</time><span class="hist__titulo">Permisos de trabajo más rápidos para quien tiene oferta de empleo<span class="votacion__tema">Inmigración</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Educación" data-fecha="2026-09-22"><time datetime="2026-09-22">22 sep</time><span class="hist__titulo">Becas de comedor en todos los colegios<span class="votacion__tema">Educación</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Empleo" data-fecha="2026-09-17"><time datetime="2026-09-17">17 sep</time><span class="hist__titulo">Reducción de la jornada laboral a 37,5 horas<span class="votacion__tema">Empleo</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-15"><time datetime="2026-09-15">15 sep</time><span class="hist__titulo">Más vivienda pública en suelo del Estado<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-10"><time datetime="2026-09-10">10 sep</time><span class="hist__titulo">Registro único de alquileres turísticos<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-08"><time datetime="2026-09-08">8 sep</time><span class="hist__titulo">Subida de las pensiones mínimas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-03"><time datetime="2026-09-03">3 sep</time><span class="hist__titulo">Impuesto permanente a las grandes fortunas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li></ul>
+              <p class="vacio" hidden>Ninguna votación con estos filtros.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">ERC<span class="meta">Grupo Parlamentario Republicano</span></span>
+              <span class="grupo__resumen">9 a favor · 1 en contra · 0 abstención</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo"><div class="filtros"><div class="filtros__chips"><button type="button" class="chip chip--on" data-tema="">Todos los temas</button><button type="button" class="chip" data-tema="Vivienda">Vivienda</button><button type="button" class="chip" data-tema="Sanidad">Sanidad</button><button type="button" class="chip" data-tema="Economía">Economía</button><button type="button" class="chip" data-tema="Empleo">Empleo</button><button type="button" class="chip" data-tema="Educación">Educación</button><button type="button" class="chip" data-tema="Inmigración">Inmigración</button></div>
+                <label class="filtros__fecha">Fecha <select class="select"><option value="all">Toda la legislatura</option><option value="30">Últimos 30 días</option><option value="7">Últimos 7 días</option></select></label></div>
+              <ul class="hist"><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-10-02"><time datetime="2026-10-02">2 oct</time><span class="hist__titulo">El Congreso debate limitar el precio del alquiler<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Sanidad" data-fecha="2026-09-30"><time datetime="2026-09-30">30 sep</time><span class="hist__titulo">Tiempo máximo de espera para consultas con especialistas<span class="votacion__tema">Sanidad</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-29"><time datetime="2026-09-29">29 sep</time><span class="hist__titulo">Rebaja del IRPF para rentas bajas<span class="votacion__tema">Economía</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Inmigración" data-fecha="2026-09-24"><time datetime="2026-09-24">24 sep</time><span class="hist__titulo">Permisos de trabajo más rápidos para quien tiene oferta de empleo<span class="votacion__tema">Inmigración</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Educación" data-fecha="2026-09-22"><time datetime="2026-09-22">22 sep</time><span class="hist__titulo">Becas de comedor en todos los colegios<span class="votacion__tema">Educación</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Empleo" data-fecha="2026-09-17"><time datetime="2026-09-17">17 sep</time><span class="hist__titulo">Reducción de la jornada laboral a 37,5 horas<span class="votacion__tema">Empleo</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-15"><time datetime="2026-09-15">15 sep</time><span class="hist__titulo">Más vivienda pública en suelo del Estado<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-10"><time datetime="2026-09-10">10 sep</time><span class="hist__titulo">Registro único de alquileres turísticos<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-08"><time datetime="2026-09-08">8 sep</time><span class="hist__titulo">Subida de las pensiones mínimas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-03"><time datetime="2026-09-03">3 sep</time><span class="hist__titulo">Impuesto permanente a las grandes fortunas<span class="votacion__tema">Economía</span></span><span class="hist__voto">A favor</span></li></ul>
+              <p class="vacio" hidden>Ninguna votación con estos filtros.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">Junts<span class="meta">Grupo Parlamentario Junts per Catalunya</span></span>
+              <span class="grupo__resumen">4 a favor · 3 en contra · 3 abstención</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo"><div class="filtros"><div class="filtros__chips"><button type="button" class="chip chip--on" data-tema="">Todos los temas</button><button type="button" class="chip" data-tema="Vivienda">Vivienda</button><button type="button" class="chip" data-tema="Sanidad">Sanidad</button><button type="button" class="chip" data-tema="Economía">Economía</button><button type="button" class="chip" data-tema="Empleo">Empleo</button><button type="button" class="chip" data-tema="Educación">Educación</button><button type="button" class="chip" data-tema="Inmigración">Inmigración</button></div>
+                <label class="filtros__fecha">Fecha <select class="select"><option value="all">Toda la legislatura</option><option value="30">Últimos 30 días</option><option value="7">Últimos 7 días</option></select></label></div>
+              <ul class="hist"><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-10-02"><time datetime="2026-10-02">2 oct</time><span class="hist__titulo">El Congreso debate limitar el precio del alquiler<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">Abstención</span></li><li class="hist__fila" data-tema="Sanidad" data-fecha="2026-09-30"><time datetime="2026-09-30">30 sep</time><span class="hist__titulo">Tiempo máximo de espera para consultas con especialistas<span class="votacion__tema">Sanidad</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-29"><time datetime="2026-09-29">29 sep</time><span class="hist__titulo">Rebaja del IRPF para rentas bajas<span class="votacion__tema">Economía</span></span><span class="hist__voto">Abstención</span></li><li class="hist__fila" data-tema="Inmigración" data-fecha="2026-09-24"><time datetime="2026-09-24">24 sep</time><span class="hist__titulo">Permisos de trabajo más rápidos para quien tiene oferta de empleo<span class="votacion__tema">Inmigración</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Educación" data-fecha="2026-09-22"><time datetime="2026-09-22">22 sep</time><span class="hist__titulo">Becas de comedor en todos los colegios<span class="votacion__tema">Educación</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Empleo" data-fecha="2026-09-17"><time datetime="2026-09-17">17 sep</time><span class="hist__titulo">Reducción de la jornada laboral a 37,5 horas<span class="votacion__tema">Empleo</span></span><span class="hist__voto">En contra</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-15"><time datetime="2026-09-15">15 sep</time><span class="hist__titulo">Más vivienda pública en suelo del Estado<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Vivienda" data-fecha="2026-09-10"><time datetime="2026-09-10">10 sep</time><span class="hist__titulo">Registro único de alquileres turísticos<span class="votacion__tema">Vivienda</span></span><span class="hist__voto">A favor</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-08"><time datetime="2026-09-08">8 sep</time><span class="hist__titulo">Subida de las pensiones mínimas<span class="votacion__tema">Economía</span></span><span class="hist__voto">Abstención</span></li><li class="hist__fila" data-tema="Economía" data-fecha="2026-09-03"><time datetime="2026-09-03">3 sep</time><span class="hist__titulo">Impuesto permanente a las grandes fortunas<span class="votacion__tema">Economía</span></span><span class="hist__voto">En contra</span></li></ul>
+              <p class="vacio" hidden>Ninguna votación con estos filtros.</p>
+            </div>
+          </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · El desempeño de cada grupo -->
+    <section class="seccion seccion--alterna" id="grupos" aria-labelledby="grp-titulo">
+      <div class="contenedor">
+        <h2 id="grp-titulo" class="seccion__titulo aparece">El desempeño de cada grupo</h2>
+        <p class="seccion__lead aparece">Datos brutos de cada grupo parlamentario en esta legislatura. Sin notas y sin juicios.</p>
+        <div class="lista">
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">PP<span class="meta">Grupo Parlamentario Popular</span></span>
+              <span class="grupo__resumen">289 propuestas · 41 aprobadas · 14%</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo">
+              <div class="cifras">
+                <div class="cifra"><p class="cifra__n">289</p><p class="cifra__e">Iniciativas propuestas</p></div>
+                <div class="cifra"><p class="cifra__n">41</p><p class="cifra__e">Iniciativas aprobadas</p></div>
+                <div class="cifra"><p class="cifra__n">14%</p><p class="cifra__e">Tasa de éxito</p></div>
+                <div class="cifra"><p class="cifra__n">612</p><p class="cifra__e">Preguntas al Gobierno</p></div>
+              </div>
+              <h4 class="detalle__titulo">Iniciativas propuestas por mes (oct 2025 – sep 2026)</h4>
+              <div class="lc"><svg viewBox="0 0 640 210" role="img" aria-label="Iniciativas propuestas por mes, de octubre a septiembre"><line x1="40" x2="624" y1="180.0" y2="180.0" class="lc__grid"/><text x="32" y="184.0" text-anchor="end" class="lc__eje">0</text><line x1="40" x2="624" y1="98.0" y2="98.0" class="lc__grid"/><text x="32" y="102.0" text-anchor="end" class="lc__eje">15</text><line x1="40" x2="624" y1="16.0" y2="16.0" class="lc__grid"/><text x="32" y="20.0" text-anchor="end" class="lc__eje">30</text><text x="40.0" y="202" text-anchor="middle" class="lc__eje">oct</text><text x="93.1" y="202" text-anchor="middle" class="lc__eje">nov</text><text x="146.2" y="202" text-anchor="middle" class="lc__eje">dic</text><text x="199.3" y="202" text-anchor="middle" class="lc__eje">ene</text><text x="252.4" y="202" text-anchor="middle" class="lc__eje">feb</text><text x="305.5" y="202" text-anchor="middle" class="lc__eje">mar</text><text x="358.5" y="202" text-anchor="middle" class="lc__eje">abr</text><text x="411.6" y="202" text-anchor="middle" class="lc__eje">may</text><text x="464.7" y="202" text-anchor="middle" class="lc__eje">jun</text><text x="517.8" y="202" text-anchor="middle" class="lc__eje">jul</text><text x="570.9" y="202" text-anchor="middle" class="lc__eje">ago</text><text x="624.0" y="202" text-anchor="middle" class="lc__eje">sep</text><path d="M40.0,48.8 L93.1,26.9 L146.2,37.9 L199.3,59.7 L252.4,43.3 L305.5,16.0 L358.5,32.4 L411.6,21.5 L464.7,48.8 L517.8,114.4 L570.9,76.1 L624.0,54.3" class="lc__linea"/><circle cx="624.0" cy="54.3" r="8" class="lc__anillo"/><circle cx="40.0" cy="48.8" r="3" class="lc__pt"><title>oct: 24</title></circle><circle cx="93.1" cy="26.9" r="3" class="lc__pt"><title>nov: 28</title></circle><circle cx="146.2" cy="37.9" r="3" class="lc__pt"><title>dic: 26</title></circle><circle cx="199.3" cy="59.7" r="3" class="lc__pt"><title>ene: 22</title></circle><circle cx="252.4" cy="43.3" r="3" class="lc__pt"><title>feb: 25</title></circle><circle cx="305.5" cy="16.0" r="3" class="lc__pt"><title>mar: 30</title></circle><circle cx="358.5" cy="32.4" r="3" class="lc__pt"><title>abr: 27</title></circle><circle cx="411.6" cy="21.5" r="3" class="lc__pt"><title>may: 29</title></circle><circle cx="464.7" cy="48.8" r="3" class="lc__pt"><title>jun: 24</title></circle><circle cx="517.8" cy="114.4" r="3" class="lc__pt"><title>jul: 12</title></circle><circle cx="570.9" cy="76.1" r="3" class="lc__pt"><title>ago: 19</title></circle><circle cx="624.0" cy="54.3" r="3" class="lc__pt"><title>sep: 23</title></circle></svg></div>
+              <h4 class="detalle__titulo">Comparativa con legislaturas anteriores</h4>
+              <p class="detalle__texto">En la XIV legislatura aprobó <strong>33</strong>. En la XV, <strong>41</strong> hasta ahora.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">PSOE<span class="meta">Grupo Parlamentario Socialista</span></span>
+              <span class="grupo__resumen">214 propuestas · 96 aprobadas · 45%</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo">
+              <div class="cifras">
+                <div class="cifra"><p class="cifra__n">214</p><p class="cifra__e">Iniciativas propuestas</p></div>
+                <div class="cifra"><p class="cifra__n">96</p><p class="cifra__e">Iniciativas aprobadas</p></div>
+                <div class="cifra"><p class="cifra__n">45%</p><p class="cifra__e">Tasa de éxito</p></div>
+                <div class="cifra"><p class="cifra__n">48</p><p class="cifra__e">Preguntas al Gobierno</p></div>
+              </div>
+              <h4 class="detalle__titulo">Iniciativas propuestas por mes (oct 2025 – sep 2026)</h4>
+              <div class="lc"><svg viewBox="0 0 640 210" role="img" aria-label="Iniciativas propuestas por mes, de octubre a septiembre"><line x1="40" x2="624" y1="180.0" y2="180.0" class="lc__grid"/><text x="32" y="184.0" text-anchor="end" class="lc__eje">0</text><line x1="40" x2="624" y1="98.0" y2="98.0" class="lc__grid"/><text x="32" y="102.0" text-anchor="end" class="lc__eje">15</text><line x1="40" x2="624" y1="16.0" y2="16.0" class="lc__grid"/><text x="32" y="20.0" text-anchor="end" class="lc__eje">30</text><text x="40.0" y="202" text-anchor="middle" class="lc__eje">oct</text><text x="93.1" y="202" text-anchor="middle" class="lc__eje">nov</text><text x="146.2" y="202" text-anchor="middle" class="lc__eje">dic</text><text x="199.3" y="202" text-anchor="middle" class="lc__eje">ene</text><text x="252.4" y="202" text-anchor="middle" class="lc__eje">feb</text><text x="305.5" y="202" text-anchor="middle" class="lc__eje">mar</text><text x="358.5" y="202" text-anchor="middle" class="lc__eje">abr</text><text x="411.6" y="202" text-anchor="middle" class="lc__eje">may</text><text x="464.7" y="202" text-anchor="middle" class="lc__eje">jun</text><text x="517.8" y="202" text-anchor="middle" class="lc__eje">jul</text><text x="570.9" y="202" text-anchor="middle" class="lc__eje">ago</text><text x="624.0" y="202" text-anchor="middle" class="lc__eje">sep</text><path d="M40.0,81.6 L93.1,59.7 L146.2,76.1 L199.3,98.0 L252.4,70.7 L305.5,48.8 L358.5,65.2 L411.6,76.1 L464.7,87.1 L517.8,136.3 L570.9,103.5 L624.0,87.1" class="lc__linea"/><circle cx="624.0" cy="87.1" r="8" class="lc__anillo"/><circle cx="40.0" cy="81.6" r="3" class="lc__pt"><title>oct: 18</title></circle><circle cx="93.1" cy="59.7" r="3" class="lc__pt"><title>nov: 22</title></circle><circle cx="146.2" cy="76.1" r="3" class="lc__pt"><title>dic: 19</title></circle><circle cx="199.3" cy="98.0" r="3" class="lc__pt"><title>ene: 15</title></circle><circle cx="252.4" cy="70.7" r="3" class="lc__pt"><title>feb: 20</title></circle><circle cx="305.5" cy="48.8" r="3" class="lc__pt"><title>mar: 24</title></circle><circle cx="358.5" cy="65.2" r="3" class="lc__pt"><title>abr: 21</title></circle><circle cx="411.6" cy="76.1" r="3" class="lc__pt"><title>may: 19</title></circle><circle cx="464.7" cy="87.1" r="3" class="lc__pt"><title>jun: 17</title></circle><circle cx="517.8" cy="136.3" r="3" class="lc__pt"><title>jul: 8</title></circle><circle cx="570.9" cy="103.5" r="3" class="lc__pt"><title>ago: 14</title></circle><circle cx="624.0" cy="87.1" r="3" class="lc__pt"><title>sep: 17</title></circle></svg></div>
+              <h4 class="detalle__titulo">Comparativa con legislaturas anteriores</h4>
+              <p class="detalle__texto">En la XIV legislatura aprobó <strong>142</strong>. En la XV, <strong>96</strong> hasta ahora.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">Vox<span class="meta">Grupo Parlamentario VOX</span></span>
+              <span class="grupo__resumen">198 propuestas · 6 aprobadas · 3%</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo">
+              <div class="cifras">
+                <div class="cifra"><p class="cifra__n">198</p><p class="cifra__e">Iniciativas propuestas</p></div>
+                <div class="cifra"><p class="cifra__n">6</p><p class="cifra__e">Iniciativas aprobadas</p></div>
+                <div class="cifra"><p class="cifra__n">3%</p><p class="cifra__e">Tasa de éxito</p></div>
+                <div class="cifra"><p class="cifra__n">301</p><p class="cifra__e">Preguntas al Gobierno</p></div>
+              </div>
+              <h4 class="detalle__titulo">Iniciativas propuestas por mes (oct 2025 – sep 2026)</h4>
+              <div class="lc"><svg viewBox="0 0 640 210" role="img" aria-label="Iniciativas propuestas por mes, de octubre a septiembre"><line x1="40" x2="624" y1="180.0" y2="180.0" class="lc__grid"/><text x="32" y="184.0" text-anchor="end" class="lc__eje">0</text><line x1="40" x2="624" y1="98.0" y2="98.0" class="lc__grid"/><text x="32" y="102.0" text-anchor="end" class="lc__eje">10</text><line x1="40" x2="624" y1="16.0" y2="16.0" class="lc__grid"/><text x="32" y="20.0" text-anchor="end" class="lc__eje">20</text><text x="40.0" y="202" text-anchor="middle" class="lc__eje">oct</text><text x="93.1" y="202" text-anchor="middle" class="lc__eje">nov</text><text x="146.2" y="202" text-anchor="middle" class="lc__eje">dic</text><text x="199.3" y="202" text-anchor="middle" class="lc__eje">ene</text><text x="252.4" y="202" text-anchor="middle" class="lc__eje">feb</text><text x="305.5" y="202" text-anchor="middle" class="lc__eje">mar</text><text x="358.5" y="202" text-anchor="middle" class="lc__eje">abr</text><text x="411.6" y="202" text-anchor="middle" class="lc__eje">may</text><text x="464.7" y="202" text-anchor="middle" class="lc__eje">jun</text><text x="517.8" y="202" text-anchor="middle" class="lc__eje">jul</text><text x="570.9" y="202" text-anchor="middle" class="lc__eje">ago</text><text x="624.0" y="202" text-anchor="middle" class="lc__eje">sep</text><path d="M40.0,57.0 L93.1,40.6 L146.2,48.8 L199.3,65.2 L252.4,40.6 L305.5,16.0 L358.5,32.4 L411.6,24.2 L464.7,48.8 L517.8,106.2 L570.9,40.6 L624.0,16.0" class="lc__linea"/><circle cx="624.0" cy="16.0" r="8" class="lc__anillo"/><circle cx="40.0" cy="57.0" r="3" class="lc__pt"><title>oct: 15</title></circle><circle cx="93.1" cy="40.6" r="3" class="lc__pt"><title>nov: 17</title></circle><circle cx="146.2" cy="48.8" r="3" class="lc__pt"><title>dic: 16</title></circle><circle cx="199.3" cy="65.2" r="3" class="lc__pt"><title>ene: 14</title></circle><circle cx="252.4" cy="40.6" r="3" class="lc__pt"><title>feb: 17</title></circle><circle cx="305.5" cy="16.0" r="3" class="lc__pt"><title>mar: 20</title></circle><circle cx="358.5" cy="32.4" r="3" class="lc__pt"><title>abr: 18</title></circle><circle cx="411.6" cy="24.2" r="3" class="lc__pt"><title>may: 19</title></circle><circle cx="464.7" cy="48.8" r="3" class="lc__pt"><title>jun: 16</title></circle><circle cx="517.8" cy="106.2" r="3" class="lc__pt"><title>jul: 9</title></circle><circle cx="570.9" cy="40.6" r="3" class="lc__pt"><title>ago: 17</title></circle><circle cx="624.0" cy="16.0" r="3" class="lc__pt"><title>sep: 20</title></circle></svg></div>
+              <h4 class="detalle__titulo">Comparativa con legislaturas anteriores</h4>
+              <p class="detalle__texto">En la XIV legislatura aprobó <strong>4</strong>. En la XV, <strong>6</strong> hasta ahora.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">Sumar<span class="meta">Grupo Parlamentario Plurinacional SUMAR</span></span>
+              <span class="grupo__resumen">176 propuestas · 52 aprobadas · 30%</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo">
+              <div class="cifras">
+                <div class="cifra"><p class="cifra__n">176</p><p class="cifra__e">Iniciativas propuestas</p></div>
+                <div class="cifra"><p class="cifra__n">52</p><p class="cifra__e">Iniciativas aprobadas</p></div>
+                <div class="cifra"><p class="cifra__n">30%</p><p class="cifra__e">Tasa de éxito</p></div>
+                <div class="cifra"><p class="cifra__n">54</p><p class="cifra__e">Preguntas al Gobierno</p></div>
+              </div>
+              <h4 class="detalle__titulo">Iniciativas propuestas por mes (oct 2025 – sep 2026)</h4>
+              <div class="lc"><svg viewBox="0 0 640 210" role="img" aria-label="Iniciativas propuestas por mes, de octubre a septiembre"><line x1="40" x2="624" y1="180.0" y2="180.0" class="lc__grid"/><text x="32" y="184.0" text-anchor="end" class="lc__eje">0</text><line x1="40" x2="624" y1="98.0" y2="98.0" class="lc__grid"/><text x="32" y="102.0" text-anchor="end" class="lc__eje">10</text><line x1="40" x2="624" y1="16.0" y2="16.0" class="lc__grid"/><text x="32" y="20.0" text-anchor="end" class="lc__eje">20</text><text x="40.0" y="202" text-anchor="middle" class="lc__eje">oct</text><text x="93.1" y="202" text-anchor="middle" class="lc__eje">nov</text><text x="146.2" y="202" text-anchor="middle" class="lc__eje">dic</text><text x="199.3" y="202" text-anchor="middle" class="lc__eje">ene</text><text x="252.4" y="202" text-anchor="middle" class="lc__eje">feb</text><text x="305.5" y="202" text-anchor="middle" class="lc__eje">mar</text><text x="358.5" y="202" text-anchor="middle" class="lc__eje">abr</text><text x="411.6" y="202" text-anchor="middle" class="lc__eje">may</text><text x="464.7" y="202" text-anchor="middle" class="lc__eje">jun</text><text x="517.8" y="202" text-anchor="middle" class="lc__eje">jul</text><text x="570.9" y="202" text-anchor="middle" class="lc__eje">ago</text><text x="624.0" y="202" text-anchor="middle" class="lc__eje">sep</text><path d="M40.0,73.4 L93.1,57.0 L146.2,65.2 L199.3,81.6 L252.4,57.0 L305.5,32.4 L358.5,48.8 L411.6,40.6 L464.7,65.2 L517.8,122.6 L570.9,57.0 L624.0,16.0" class="lc__linea"/><circle cx="624.0" cy="16.0" r="8" class="lc__anillo"/><circle cx="40.0" cy="73.4" r="3" class="lc__pt"><title>oct: 13</title></circle><circle cx="93.1" cy="57.0" r="3" class="lc__pt"><title>nov: 15</title></circle><circle cx="146.2" cy="65.2" r="3" class="lc__pt"><title>dic: 14</title></circle><circle cx="199.3" cy="81.6" r="3" class="lc__pt"><title>ene: 12</title></circle><circle cx="252.4" cy="57.0" r="3" class="lc__pt"><title>feb: 15</title></circle><circle cx="305.5" cy="32.4" r="3" class="lc__pt"><title>mar: 18</title></circle><circle cx="358.5" cy="48.8" r="3" class="lc__pt"><title>abr: 16</title></circle><circle cx="411.6" cy="40.6" r="3" class="lc__pt"><title>may: 17</title></circle><circle cx="464.7" cy="65.2" r="3" class="lc__pt"><title>jun: 14</title></circle><circle cx="517.8" cy="122.6" r="3" class="lc__pt"><title>jul: 7</title></circle><circle cx="570.9" cy="57.0" r="3" class="lc__pt"><title>ago: 15</title></circle><circle cx="624.0" cy="16.0" r="3" class="lc__pt"><title>sep: 20</title></circle></svg></div>
+              <h4 class="detalle__titulo">Comparativa con legislaturas anteriores</h4>
+              <p class="detalle__texto">Sumar no existía como grupo en la XIV legislatura. En la XV ha aprobado <strong>52</strong> hasta ahora.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">ERC<span class="meta">Grupo Parlamentario Republicano</span></span>
+              <span class="grupo__resumen">121 propuestas · 14 aprobadas · 12%</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo">
+              <div class="cifras">
+                <div class="cifra"><p class="cifra__n">121</p><p class="cifra__e">Iniciativas propuestas</p></div>
+                <div class="cifra"><p class="cifra__n">14</p><p class="cifra__e">Iniciativas aprobadas</p></div>
+                <div class="cifra"><p class="cifra__n">12%</p><p class="cifra__e">Tasa de éxito</p></div>
+                <div class="cifra"><p class="cifra__n">189</p><p class="cifra__e">Preguntas al Gobierno</p></div>
+              </div>
+              <h4 class="detalle__titulo">Iniciativas propuestas por mes (oct 2025 – sep 2026)</h4>
+              <div class="lc"><svg viewBox="0 0 640 210" role="img" aria-label="Iniciativas propuestas por mes, de octubre a septiembre"><line x1="40" x2="624" y1="180.0" y2="180.0" class="lc__grid"/><text x="32" y="184.0" text-anchor="end" class="lc__eje">0</text><line x1="40" x2="624" y1="98.0" y2="98.0" class="lc__grid"/><text x="32" y="102.0" text-anchor="end" class="lc__eje">10</text><line x1="40" x2="624" y1="16.0" y2="16.0" class="lc__grid"/><text x="32" y="20.0" text-anchor="end" class="lc__eje">20</text><text x="40.0" y="202" text-anchor="middle" class="lc__eje">oct</text><text x="93.1" y="202" text-anchor="middle" class="lc__eje">nov</text><text x="146.2" y="202" text-anchor="middle" class="lc__eje">dic</text><text x="199.3" y="202" text-anchor="middle" class="lc__eje">ene</text><text x="252.4" y="202" text-anchor="middle" class="lc__eje">feb</text><text x="305.5" y="202" text-anchor="middle" class="lc__eje">mar</text><text x="358.5" y="202" text-anchor="middle" class="lc__eje">abr</text><text x="411.6" y="202" text-anchor="middle" class="lc__eje">may</text><text x="464.7" y="202" text-anchor="middle" class="lc__eje">jun</text><text x="517.8" y="202" text-anchor="middle" class="lc__eje">jul</text><text x="570.9" y="202" text-anchor="middle" class="lc__eje">ago</text><text x="624.0" y="202" text-anchor="middle" class="lc__eje">sep</text><path d="M40.0,114.4 L93.1,98.0 L146.2,106.2 L199.3,114.4 L252.4,98.0 L305.5,81.6 L358.5,89.8 L411.6,81.6 L464.7,106.2 L517.8,147.2 L570.9,81.6 L624.0,48.8" class="lc__linea"/><circle cx="624.0" cy="48.8" r="8" class="lc__anillo"/><circle cx="40.0" cy="114.4" r="3" class="lc__pt"><title>oct: 8</title></circle><circle cx="93.1" cy="98.0" r="3" class="lc__pt"><title>nov: 10</title></circle><circle cx="146.2" cy="106.2" r="3" class="lc__pt"><title>dic: 9</title></circle><circle cx="199.3" cy="114.4" r="3" class="lc__pt"><title>ene: 8</title></circle><circle cx="252.4" cy="98.0" r="3" class="lc__pt"><title>feb: 10</title></circle><circle cx="305.5" cy="81.6" r="3" class="lc__pt"><title>mar: 12</title></circle><circle cx="358.5" cy="89.8" r="3" class="lc__pt"><title>abr: 11</title></circle><circle cx="411.6" cy="81.6" r="3" class="lc__pt"><title>may: 12</title></circle><circle cx="464.7" cy="106.2" r="3" class="lc__pt"><title>jun: 9</title></circle><circle cx="517.8" cy="147.2" r="3" class="lc__pt"><title>jul: 4</title></circle><circle cx="570.9" cy="81.6" r="3" class="lc__pt"><title>ago: 12</title></circle><circle cx="624.0" cy="48.8" r="3" class="lc__pt"><title>sep: 16</title></circle></svg></div>
+              <h4 class="detalle__titulo">Comparativa con legislaturas anteriores</h4>
+              <p class="detalle__texto">En la XIV legislatura aprobó <strong>17</strong>. En la XV, <strong>14</strong> hasta ahora.</p>
+            </div>
+          </details>
+          <details class="grupo">
+            <summary>
+              <span class="grupo__nombre">Junts<span class="meta">Grupo Parlamentario Junts per Catalunya</span></span>
+              <span class="grupo__resumen">97 propuestas · 11 aprobadas · 11%</span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="grupo__cuerpo">
+              <div class="cifras">
+                <div class="cifra"><p class="cifra__n">97</p><p class="cifra__e">Iniciativas propuestas</p></div>
+                <div class="cifra"><p class="cifra__n">11</p><p class="cifra__e">Iniciativas aprobadas</p></div>
+                <div class="cifra"><p class="cifra__n">11%</p><p class="cifra__e">Tasa de éxito</p></div>
+                <div class="cifra"><p class="cifra__n">143</p><p class="cifra__e">Preguntas al Gobierno</p></div>
+              </div>
+              <h4 class="detalle__titulo">Iniciativas propuestas por mes (oct 2025 – sep 2026)</h4>
+              <div class="lc"><svg viewBox="0 0 640 210" role="img" aria-label="Iniciativas propuestas por mes, de octubre a septiembre"><line x1="40" x2="624" y1="180.0" y2="180.0" class="lc__grid"/><text x="32" y="184.0" text-anchor="end" class="lc__eje">0</text><line x1="40" x2="624" y1="98.0" y2="98.0" class="lc__grid"/><text x="32" y="102.0" text-anchor="end" class="lc__eje">10</text><line x1="40" x2="624" y1="16.0" y2="16.0" class="lc__grid"/><text x="32" y="20.0" text-anchor="end" class="lc__eje">20</text><text x="40.0" y="202" text-anchor="middle" class="lc__eje">oct</text><text x="93.1" y="202" text-anchor="middle" class="lc__eje">nov</text><text x="146.2" y="202" text-anchor="middle" class="lc__eje">dic</text><text x="199.3" y="202" text-anchor="middle" class="lc__eje">ene</text><text x="252.4" y="202" text-anchor="middle" class="lc__eje">feb</text><text x="305.5" y="202" text-anchor="middle" class="lc__eje">mar</text><text x="358.5" y="202" text-anchor="middle" class="lc__eje">abr</text><text x="411.6" y="202" text-anchor="middle" class="lc__eje">may</text><text x="464.7" y="202" text-anchor="middle" class="lc__eje">jun</text><text x="517.8" y="202" text-anchor="middle" class="lc__eje">jul</text><text x="570.9" y="202" text-anchor="middle" class="lc__eje">ago</text><text x="624.0" y="202" text-anchor="middle" class="lc__eje">sep</text><path d="M40.0,130.8 L93.1,114.4 L146.2,122.6 L199.3,130.8 L252.4,114.4 L305.5,98.0 L358.5,106.2 L411.6,106.2 L464.7,122.6 L517.8,155.4 L570.9,98.0 L624.0,65.2" class="lc__linea"/><circle cx="624.0" cy="65.2" r="8" class="lc__anillo"/><circle cx="40.0" cy="130.8" r="3" class="lc__pt"><title>oct: 6</title></circle><circle cx="93.1" cy="114.4" r="3" class="lc__pt"><title>nov: 8</title></circle><circle cx="146.2" cy="122.6" r="3" class="lc__pt"><title>dic: 7</title></circle><circle cx="199.3" cy="130.8" r="3" class="lc__pt"><title>ene: 6</title></circle><circle cx="252.4" cy="114.4" r="3" class="lc__pt"><title>feb: 8</title></circle><circle cx="305.5" cy="98.0" r="3" class="lc__pt"><title>mar: 10</title></circle><circle cx="358.5" cy="106.2" r="3" class="lc__pt"><title>abr: 9</title></circle><circle cx="411.6" cy="106.2" r="3" class="lc__pt"><title>may: 9</title></circle><circle cx="464.7" cy="122.6" r="3" class="lc__pt"><title>jun: 7</title></circle><circle cx="517.8" cy="155.4" r="3" class="lc__pt"><title>jul: 3</title></circle><circle cx="570.9" cy="98.0" r="3" class="lc__pt"><title>ago: 10</title></circle><circle cx="624.0" cy="65.2" r="3" class="lc__pt"><title>sep: 14</title></circle></svg></div>
+              <h4 class="detalle__titulo">Comparativa con legislaturas anteriores</h4>
+              <p class="detalle__texto">En la XIV legislatura aprobó <strong>9</strong>. En la XV, <strong>11</strong> hasta ahora.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie" id="sobre-esto">
+    <div class="contenedor pie__interior">
+      <div>
+        <p class="pie__marca">Euthyna</p>
+        <p class="pie__texto">Herramienta ciudadana de rendición de cuentas parlamentaria: quién decide qué, cómo lo vota y si cumple lo que promete.</p>
+      </div>
+      <div id="contacto">
+        <p class="pie__texto"><strong>Prototipo.</strong> Todos los datos de esta página son ficticios y sirven solo para probar el diseño.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

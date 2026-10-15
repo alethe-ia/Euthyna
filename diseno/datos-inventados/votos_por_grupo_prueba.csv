@@ -1,0 +1,61 @@
+id_votacion;fecha;titulo;grupo;voto;diputados_fuera_del_guion;sentido_fuera_del_guion;diputados_ausentes
+V01;2026-10-02;El Congreso debate limitar el precio del alquiler;PP;En contra;0;;3
+V01;2026-10-02;El Congreso debate limitar el precio del alquiler;PSOE;A favor;0;;0
+V01;2026-10-02;El Congreso debate limitar el precio del alquiler;Vox;En contra;0;;0
+V01;2026-10-02;El Congreso debate limitar el precio del alquiler;Sumar;A favor;1;En contra;0
+V01;2026-10-02;El Congreso debate limitar el precio del alquiler;ERC;A favor;0;;0
+V01;2026-10-02;El Congreso debate limitar el precio del alquiler;Junts;Abstención;0;;0
+V02;2026-09-30;Tiempo máximo de espera para consultas con especialistas;PP;A favor;0;;0
+V02;2026-09-30;Tiempo máximo de espera para consultas con especialistas;PSOE;A favor;0;;2
+V02;2026-09-30;Tiempo máximo de espera para consultas con especialistas;Vox;Abstención;0;;1
+V02;2026-09-30;Tiempo máximo de espera para consultas con especialistas;Sumar;A favor;0;;0
+V02;2026-09-30;Tiempo máximo de espera para consultas con especialistas;ERC;A favor;0;;0
+V02;2026-09-30;Tiempo máximo de espera para consultas con especialistas;Junts;En contra;0;;0
+V03;2026-09-29;Rebaja del IRPF para rentas bajas;PP;A favor;0;;12
+V03;2026-09-29;Rebaja del IRPF para rentas bajas;PSOE;En contra;0;;4
+V03;2026-09-29;Rebaja del IRPF para rentas bajas;Vox;A favor;0;;0
+V03;2026-09-29;Rebaja del IRPF para rentas bajas;Sumar;En contra;0;;0
+V03;2026-09-29;Rebaja del IRPF para rentas bajas;ERC;En contra;0;;0
+V03;2026-09-29;Rebaja del IRPF para rentas bajas;Junts;Abstención;0;;0
+V04;2026-09-24;Permisos de trabajo más rápidos para quien tiene oferta de empleo;PP;Abstención;6;A favor;0
+V04;2026-09-24;Permisos de trabajo más rápidos para quien tiene oferta de empleo;PSOE;A favor;0;;0
+V04;2026-09-24;Permisos de trabajo más rápidos para quien tiene oferta de empleo;Vox;En contra;0;;2
+V04;2026-09-24;Permisos de trabajo más rápidos para quien tiene oferta de empleo;Sumar;A favor;0;;0
+V04;2026-09-24;Permisos de trabajo más rápidos para quien tiene oferta de empleo;ERC;A favor;0;;0
+V04;2026-09-24;Permisos de trabajo más rápidos para quien tiene oferta de empleo;Junts;A favor;0;;0
+V05;2026-09-22;Becas de comedor en todos los colegios;PP;A favor;0;;5
+V05;2026-09-22;Becas de comedor en todos los colegios;PSOE;A favor;0;;3
+V05;2026-09-22;Becas de comedor en todos los colegios;Vox;Abstención;0;;0
+V05;2026-09-22;Becas de comedor en todos los colegios;Sumar;A favor;0;;0
+V05;2026-09-22;Becas de comedor en todos los colegios;ERC;A favor;0;;0
+V05;2026-09-22;Becas de comedor en todos los colegios;Junts;A favor;0;;0
+V06;2026-09-17;Reducción de la jornada laboral a 37,5 horas;PP;En contra;0;;0
+V06;2026-09-17;Reducción de la jornada laboral a 37,5 horas;PSOE;A favor;0;;6
+V06;2026-09-17;Reducción de la jornada laboral a 37,5 horas;Vox;En contra;0;;0
+V06;2026-09-17;Reducción de la jornada laboral a 37,5 horas;Sumar;A favor;0;;0
+V06;2026-09-17;Reducción de la jornada laboral a 37,5 horas;ERC;A favor;0;;0
+V06;2026-09-17;Reducción de la jornada laboral a 37,5 horas;Junts;En contra;0;;0
+V07;2026-09-15;Más vivienda pública en suelo del Estado;PP;Abstención;0;;4
+V07;2026-09-15;Más vivienda pública en suelo del Estado;PSOE;A favor;0;;0
+V07;2026-09-15;Más vivienda pública en suelo del Estado;Vox;En contra;0;;0
+V07;2026-09-15;Más vivienda pública en suelo del Estado;Sumar;A favor;0;;0
+V07;2026-09-15;Más vivienda pública en suelo del Estado;ERC;A favor;0;;0
+V07;2026-09-15;Más vivienda pública en suelo del Estado;Junts;A favor;2;En contra;0
+V08;2026-09-10;Registro único de alquileres turísticos;PP;A favor;0;;0
+V08;2026-09-10;Registro único de alquileres turísticos;PSOE;A favor;0;;2
+V08;2026-09-10;Registro único de alquileres turísticos;Vox;A favor;0;;3
+V08;2026-09-10;Registro único de alquileres turísticos;Sumar;A favor;0;;0
+V08;2026-09-10;Registro único de alquileres turísticos;ERC;A favor;1;Abstención;0
+V08;2026-09-10;Registro único de alquileres turísticos;Junts;A favor;0;;0
+V09;2026-09-08;Subida de las pensiones mínimas;PP;A favor;0;;2
+V09;2026-09-08;Subida de las pensiones mínimas;PSOE;A favor;0;;0
+V09;2026-09-08;Subida de las pensiones mínimas;Vox;A favor;0;;0
+V09;2026-09-08;Subida de las pensiones mínimas;Sumar;A favor;0;;0
+V09;2026-09-08;Subida de las pensiones mínimas;ERC;A favor;0;;0
+V09;2026-09-08;Subida de las pensiones mínimas;Junts;Abstención;0;;0
+V10;2026-09-03;Impuesto permanente a las grandes fortunas;PP;En contra;0;;0
+V10;2026-09-03;Impuesto permanente a las grandes fortunas;PSOE;A favor;0;;5
+V10;2026-09-03;Impuesto permanente a las grandes fortunas;Vox;En contra;0;;0
+V10;2026-09-03;Impuesto permanente a las grandes fortunas;Sumar;A favor;0;;0
+V10;2026-09-03;Impuesto permanente a las grandes fortunas;ERC;A favor;0;;0
+V10;2026-09-03;Impuesto permanente a las grandes fortunas;Junts;En contra;0;;0

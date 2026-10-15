@@ -1,0 +1,11 @@
+id;tema;titulo;resumen;estado;fecha
+V01;Vivienda;El Congreso debate limitar el precio del alquiler;Propuesta para fijar un tope máximo al precio de los alquileres en zonas tensionadas.;Aprobada;2026-10-02
+V02;Sanidad;Tiempo máximo de espera para consultas con especialistas;Fija un plazo máximo de 30 días para que te atienda un especialista en la sanidad pública.;En trámite;2026-09-30
+V03;Economía;Rebaja del IRPF para rentas bajas;Propuesta para reducir el tramo autonómico del IRPF a quienes ganan menos de 30.000 euros al año.;Rechazada;2026-09-29
+V04;Inmigración;Permisos de trabajo más rápidos para quien tiene oferta de empleo;Acorta los plazos para tramitar los permisos de trabajo de personas extranjeras con oferta de empleo.;Aprobada;2026-09-24
+V05;Educación;Becas de comedor en todos los colegios;Garantiza una comida al día a los niños de familias con pocos recursos.;Aprobada;2026-09-22
+V06;Empleo;Reducción de la jornada laboral a 37,5 horas;Reduce la jornada máxima semanal a 37,5 horas sin bajar el sueldo.;Rechazada;2026-09-17
+V07;Vivienda;Más vivienda pública en suelo del Estado;Obliga a destinar solares del Estado sin uso a construir vivienda de alquiler asequible.;Aprobada;2026-09-15
+V08;Vivienda;Registro único de alquileres turísticos;Crea un registro estatal obligatorio para los pisos que se alquilan por días.;Aprobada;2026-09-10
+V09;Economía;Subida de las pensiones mínimas;Sube las pensiones mínimas según la inflación de los últimos doce meses.;Aprobada;2026-09-08
+V10;Economía;Impuesto permanente a las grandes fortunas;Hace permanente el impuesto a los patrimonios más altos.;Rechazada;2026-09-03

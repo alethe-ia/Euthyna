@@ -1,0 +1,11 @@
+id;fecha;titulo;tema;resultado;a_favor;en_contra;abstenciones;sin_votar
+V01;2026-10-02;El Congreso debate limitar el precio del alquiler;Vivienda;Aprobada;172;168;7;3
+V02;2026-09-30;Tiempo máximo de espera para consultas con especialistas;Sanidad;En trámite;304;7;36;3
+V03;2026-09-29;Rebaja del IRPF para rentas bajas;Economía;Rechazada;160;167;7;16
+V04;2026-09-24;Permisos de trabajo más rápidos para quien tiene oferta de empleo;Inmigración;Aprobada;183;31;134;2
+V05;2026-09-22;Becas de comedor en todos los colegios;Educación;Aprobada;309;0;33;8
+V06;2026-09-17;Reducción de la jornada laboral a 37,5 horas;Empleo;Rechazada;155;185;4;6
+V07;2026-09-15;Más vivienda pública en suelo del Estado;Vivienda;Aprobada;176;35;135;4
+V08;2026-09-10;Registro único de alquileres turísticos;Vivienda;Aprobada;344;0;1;5
+V09;2026-09-08;Subida de las pensiones mínimas;Economía;Aprobada;341;0;7;2
+V10;2026-09-03;Impuesto permanente a las grandes fortunas;Economía;Rechazada;158;181;6;5
