@@ -1,0 +1,37 @@
+name: Actualizar datos del Senado
+# El robots.txt del Senado pide visitas entre las 02:00 y las 06:00 (hora de Madrid) y 60 segundos entre
+# peticiones. 01:10 UTC son las 03:10 en horario de verano y las 02:10 en invierno: dentro de la ventana
+# las dos veces. El script ademas se niega a empezar fuera de esas horas.
+on:
+  schedule:
+    # GitHub a veces retrasa las ejecuciones programadas varias horas, asi que hay tres turnos dentro de la
+    # ventana (01:10, 02:10 y 03:10 UTC = 03:10-05:10 en verano, 02:10-04:10 en invierno, hora de Madrid).
+    # Si un turno llega fuera de horario, el script no hace nada; si ya esta todo bajado, solo pide la lista.
+    - cron: "10 1 * * *"
+    - cron: "10 2 * * *"
+    - cron: "10 3 * * *"
+  workflow_dispatch: {}      # lanzarlo a mano solo entre las 02:00 y las 06:00 (hora de Madrid)
+permissions:
+  contents: write
+concurrency:
+  group: euthyna-datos
+  cancel-in-progress: false
+jobs:
+  senado:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300     # la primera descarga completa son unas 2 horas por la espera de 60 s
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Datos del Senado (legislatura XV)
+        run: python3 actualizar_senado.py 15
+      - name: Guardar cambios
+        if: always()          # si se corta por la ventana horaria, se guarda lo ya bajado
+        run: |
+          git config user.name "euthyna-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A datos
+          git diff --cached --quiet || git commit -m "Datos del Senado actualizados"
+          git pull --rebase
+          git push
